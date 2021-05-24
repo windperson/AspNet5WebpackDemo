@@ -15,6 +15,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6" />
   </ItemGroup>
 
+  <Target Name="Npm install" BeforeTargets="BeforeBuild">
+    <Exec Command="npm install" />
+  </Target>
+
   <Target Name="Create bundles" BeforeTargets="BeforeBuild">
     <Exec Command="npm run build" />
   </Target>
