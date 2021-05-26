@@ -2,9 +2,10 @@
   "name": "ASPNetCore5MVC_demo",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --profile",
-    "production": "webpack --profile --mode production"
+    "build": "webpack --progress",
+    "production": "webpack --progress --mode production"
   },
+  "private": true,
   "author": "Isak Pao",
   "license": "ISC",
   "devDependencies": {
@@ -20,6 +21,7 @@
     "postcss-loader": "^5.3.0",
     "sass": "^1.32.13",
     "sass-loader": "^11.1.1",
+    "terser-webpack-plugin": "^5.1.2",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
   },

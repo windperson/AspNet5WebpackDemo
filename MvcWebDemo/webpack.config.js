@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const bundleFileName = 'bundle';
 const dirName = 'wwwroot/dist';
@@ -65,9 +66,16 @@ module.exports = (env, argv) => {
 		optimization: {
 			minimize: true,
 			minimizer: [
-				// For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-				`...`,
-				new CssMinimizerPlugin(),
+				new TerserPlugin({
+					extractComments: true,
+					//exclude: /\/excludes/,
+					terserOptions: {
+						mangle: true,
+						//ie8: false,
+						//safari10: false
+					}
+				}),
+				new CssMinimizerPlugin()
 			],
 		},
 		plugins: [

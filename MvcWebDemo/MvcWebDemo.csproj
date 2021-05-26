@@ -21,12 +21,12 @@
 
   <Target Name="create_debug_bundles" DependsOnTargets="npm_install" BeforeTargets="BeforeBuild" Condition="'$(Configuration)'=='Debug'">
     <Message Text="build webpack with Debug condition"/>
-    <Exec Command="npm run build" />
+    <Exec Command="npx webpack --no-color --progress" />
   </Target>
 
   <Target Name="create_production_bundles" DependsOnTargets="npm_install" BeforeTargets="BeforeBuild" Condition="'$(Configuration)'=='Release'">
     <Message Text="build webpack with Release condition"/>
-    <Exec Command="npm run production" />
+    <Exec Command="npx webpack --no-color --progress --mode production" />
   </Target>
 
 </Project>
