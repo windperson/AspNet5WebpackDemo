@@ -1,5 +1,5 @@
 {
-  "name": "ASPNetCore5MVC_demo",
+  "name": "net5-mvc-demo",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --progress",
