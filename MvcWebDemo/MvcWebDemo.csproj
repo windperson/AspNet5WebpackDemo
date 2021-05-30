@@ -15,8 +15,15 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot/js/**/*" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot/scss/**/*" CopyToPublishDirectory="Never" />
+    <Content Update="./**/package.json" CopyToPublishDirectory="Never" />
+    <Content Update="./**/package-lock.json" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
   <Target Name="npm_install" BeforeTargets="BeforeBuild">
-    <Exec Command="npm install" />
+    <Exec Command="npm ci" />
   </Target>
 
   <Target Name="create_debug_bundles" DependsOnTargets="npm_install" BeforeTargets="BeforeBuild" Condition="'$(Configuration)'=='Debug'">
