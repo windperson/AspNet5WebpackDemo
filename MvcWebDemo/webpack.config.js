@@ -12,7 +12,6 @@ module.exports = (env, argv) => {
 		mode: argv.mode === "production" ? "production" : "development",
 		devtool: argv.mode === "production" ? 'hidden-source-map' : 'source-map',
 		entry: [
-			'./node_modules/jquery/dist/jquery.js',
 			'./node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js',
 			'./node_modules/bootstrap/dist/js/bootstrap.bundle.js',
 			'./wwwroot/js/site.js',
@@ -23,15 +22,9 @@ module.exports = (env, argv) => {
 			path: path.resolve(__dirname, dirName),
 			clean: true
 		},
+		externals: { jquery: 'jQuery'},
 		module: {
 			rules: [
-				{
-					test: require.resolve("jquery"),
-					loader: "expose-loader",
-					options: {
-						exposes: ["$", "jQuery"],
-					},
-				},
 				{
 					test: /\.s[c|a]ss$/,
 					use: [
